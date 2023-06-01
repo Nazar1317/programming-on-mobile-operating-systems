@@ -5,7 +5,7 @@ docker run -d -p 80:80 --name mynginx nginx
 
     Изменил стартовую страницу:
 
-Перейти в контейнер и заменить файл index.html в директории /usr/share/nginx/html/ на нужный:
+Перешел в контейнер и заменил файл index.html в директории /usr/share/nginx/html/ на подходящий:
 
 docker exec -it mynginx bash
 cd /usr/share/nginx/html/
