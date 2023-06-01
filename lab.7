@@ -1,0 +1,52 @@
+Для создания простого приложения на Flask с использованием MongoDB, мненеобходимо установить и импортировать библиотеку pymongo
+
+from flask import Flask
+from pymongo import MongoClient
+
+app = Flask(__name__)
+
+# Устанавливаю соединения с MongoDB
+client = MongoClient('mongodb://localhost:27017/')
+db = client['mydatabase']
+users = db['users']
+
+@app.route('/')
+def index():
+    # Получаю информацию о всех пользователях в базе данных
+    all_users = users.find()
+    
+    Сформировал HTML-страницу с информацией о пользователях
+    html = "<h1>Список пользователей:</h1>"
+    for user in all_users:
+        html += "<p>Имя: {}<br>Возраст: {}</p>".format(user['name'], user['age'])
+    
+    return html
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+Для того чтобы запустить это приложение, код сохраняю в файле app.py и  устанавливаю библиотеку pymongo 
+запускаю приложение:
+
+pip install pymongo
+python app.py
+
+2.
+В созданный  Dockerfile добавляю команды:
+
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
+3.
+Создал requirements.txt и добавил туда
+
+Flask
+pymongo
