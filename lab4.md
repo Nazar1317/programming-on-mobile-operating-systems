@@ -1,7 +1,7 @@
 Готовый js файл в html я беру из сети
 Создал dockerfile в репозитории и в нем пишу код , который представлен ниже
 
-FROm nginx
+FROM nginx
 
 COPY js.html /usr/share/nginx/html
 
