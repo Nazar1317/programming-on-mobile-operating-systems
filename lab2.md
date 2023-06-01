@@ -13,6 +13,25 @@ rm index.html
 echo "Hello, World!" > index.html
 exit
 
-    Проверка:
+    Сделал проверку:
 
-Открыть браузер и перейти по адресу http://localhost. Должна открываться страница с текстом "Hello, World!".
+Открываю браузер и перехожу по адресу http://localhost. Должна открываться страница с текстом "Hello, World!".
+
+
+    Создаю контейнер с веб-сервером Apache:
+
+docker run -d -p 80:80 --name myapache httpd
+
+    Изменяю стартовую страницу:
+
+Перехожу в контейнер и заменяю файл index.html в директории /usr/local/apache2/htdocs/ на нужный:
+
+docker exec -it myapache bash
+cd /usr/local/apache2/htdocs/
+rm index.html
+echo "Hello, World!" > index.html
+exit
+
+    Выполняю проверку:
+
+Открываю браузер и перехожу по адресу http://localhost. Должна будет открыться страница с текстом "Hello, World!".
